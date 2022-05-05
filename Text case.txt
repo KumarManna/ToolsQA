@@ -1,0 +1,149 @@
+1# Testing Registration and Login of the Online Shopping Website
+Can a guest purchase product as guest user?
+Can a guest able to  register on the website easily?
+Once registered,  can a user able to login successfully?
+Can a registered user able to view all the products listed on the website?
+Are the user sessions being maintained for the intended time period?
+Is the user’s session timing out and expiring after defined time?
+Is registered user is able to view and modify it's user account information?
+Is registered user is not able to access user account after logout?
+
+
+2# Testing Search feature of the Online Shopping Website
+Is website having multiple filters to search products like., price range, category, brands etc.?
+Are relevant Products are displaying after applying single or multiple search filters?
+Is there an option to display fixed number of products on search page?
+Is there any sort option available on the search page and is that working properly?
+
+3# Testing the Product details Page of the Online Shopping Website
+Is the page displaying all the product's information on that page?
+Can a user select different size, color and quantity of the product?
+Is the page displaying any offers if applicable to the product?
+Is the page displaying the stock information correctly?
+Is the product getting added cart after doing so?
+
+4# Testing the Shopping Cart of the e-commerce website
+Is the correct price getting displayed in the shopping cart for the selected product/s?
+Is there an option to apply coupon codes?
+Can a user increase or decrease the quantity of  a product from the shopping cart?
+Can a user remove the product from the shopping cart?
+
+5# Testing the Checkout Flow and Order Confirmation of the Online shopping website
+Does user able to enter shipping and billing information or is it auto filled, if the user already saved it?
+Are all the supported payments methods working?
+Is user's sensitive information handled securely, like credit/debit card info, address, bank details etc.
+Is the user receives email or sms on order confirmation?
+Can user track the order?
+
+////////////Output Positive Scenario//////////////////////
+1# Test Case - Automate User Registration process of e-commerce website.
+
+Steps to Automate:
+1. Open this url  http://automationpractice.com/index.php
+2. Click on sign in link.
+3. Enter your email address in 'Create and account' section.
+4. Click on Create an Account button.
+5. Enter your Personal Information, Address and Contact info.
+6. Click on Register button.
+7. Validate that user is created.
+ifSucess------>"User Verified,Test case Passed"
+ifFaill------->User Verification Failed,Test case Failed
+
+////////////Output Negative Scenarios//////////////////////
+2# Test Case - Verify invalid email address error.
+Steps to Automate:
+1. Open this url  http://automationpractice.com/index.php
+2. Click on sign in link.
+3. Enter invalid email address in the email box and click enter.
+4. Validate that an error message is displaying saying "Invalid email address."
+
+3# Test Case - Verify error messages for mandatory fields.
+Steps to Automate:
+1. Open this url  http://automationpractice.com/index.php
+2. Click on sign in link.
+3. Enter email address and click Register button.
+4. Leave the mandatory fields (marked with *) blank and click Register button.
+5. Verify that error has been displayed for the mandatory fields.
+
+4# Test Case - Verify error messages for entering incorrect values in fields.
+Steps to Automate:
+1. Open this url  http://automationpractice.com/index.php
+2. Click on sign in link.
+3. Enter email address and click Register button.
+4. Enter incorrect values in fields like., enter numbers in first and last name, city field etc., and enter alphabets in Mobile no, Zip postal code etc., and click on 'Register' button.
+5. Verify that error messages fpr respective fields are displaying.
+Try automating the above scenarios using Selenium commands, if you face any difficulty please refer the Selenium Tutorial series.
+
+5# Test Case - Automate 'Search Product' feature of e-commerce website with Selenium.
+Steps to Automate:
+1. Open link http://automationpractice.com/index.php
+2. Move your cursor over Women's link.
+3. Click on sub menu 'T-shirts'
+4. Get Name/Text of the first product displayed on the page.
+5. Now enter the same product name in the search bar present on top of page and click search button.
+6. Validate that same product is displayed on searched page with same details which were displayed on T-Shirt's page.
+
+6# Test Case - Automate end-to-end "Buy Product" feature of the e-commerce website.
+Steps to Automate:
+1. Open link http://automationpractice.com/index.php
+2. Login to the website.
+3. Move your cursor over Women's link.
+4. Click on sub menu 'T-shirts'.
+5. Mouse hover on the second product displayed.
+6. 'More' button will be displayed, click on 'More' button.
+7. Increase quantity to 2.
+8. Select size 'L'
+9. Select color.
+10. Click 'Add to Cart' button.
+11. Click 'Proceed to checkout' button.
+12. Complete the buy order process till payment.
+13. Make sure that Product is ordered.
+
+7# Test Case - Verify that 'Add to Wishlist' only works after login.
+Steps to Automate:
+1. Open link http://automationpractice.com/index.php
+2. Move your cursor over Women's link.
+3. Click on sub menu 'T-shirts'.
+4. Mouse hover on the second product displayed.
+5. 'Add to Wishlist' will appear on the bottom of that product, click on it.
+6. Verify that error message is displayed 'You must be logged in to manage your wish list.'
+
+8# Test Case - Verify that Total Price is reflecting correctly if user changes quantity on 'Shopping Cart Summary' Page.
+Steps to Automate:
+1. Open link http://automationpractice.com/index.php
+2. Login to the website.
+3. Move your cursor over Women's link.
+4. Click on sub menu 'T-shirts'.
+5. Mouse hover on the second product displayed.
+6. 'More' button will be displayed, click on 'More' button.
+7. Make sure quantity is set to 1.
+8. Select size 'M'
+9. Select color of your choice.
+10. Click 'Add to Cart' button.
+11. Click 'Proceed to checkout' button.
+12. Change the quantity to 2.
+13. Verify that Total price is changing and reflecting correct price.
+Similar way you can add few more test cases.
+
+
+
+/////////////////////////////////////////////////New Demo//////////////////////////////////////////////////
+Example-1: https://demo.openmrs.org/openmrs/
+
+
+1. Username/Password ::: Admin/Admin123
+2. Click on In-patient ward
+
+Test Scenario’s:
+
+Login
+Logout
+Register a Patient
+Find Patient Record
+View the Patient
+Search a Patient
+Book an Appointment
+Capture Vitals
+
+
+
