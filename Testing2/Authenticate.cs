@@ -21,22 +21,39 @@ namespace Testing2
             {
                 IWebDriver driver = browser.Open_Url();
 
-                string def_handle = driver.CurrentWindowHandle;
+                //string def_handle = driver.CurrentWindowHandle;
 
-                IWebElement sign_in = driver.FindElement(By.XPath("//div/a[@class='login' and @href='http://automationpractice.com/index.php?controller=my-account']"));
+                //IWebElement sign_in = driver.FindElement(By.XPath("//div/a[@class='login' and @href='http://automationpractice.com/index.php?controller=my-account']"));
 
-                browser.Action(driver).MoveToElement(sign_in).Click().Build().Perform();
+                //browser.Action(driver).MoveToElement(sign_in).Click().Build().Perform();
 
                 Thread.Sleep(100);
 
                 Console.WriteLine(driver.CurrentWindowHandle);
 
                 Form form = new Form();
-                //form.SignUp_Form(driver, browser);
-                //form.Sign_Out(driver, browser);
-                //form.Sign_in(driver, browser);
+                //bool regn=form.User_Registration(driver, browser);
+                //if (regn == true)
+                //{
+                //    Console.WriteLine("User Registered,Test case Passed");
+                //}
+                //else
+                //{
+                //    Console.WriteLine("User not Registered,Test case Failed");
+                //}
+                ////form.Sign_Out(driver, browser);
+                //bool regn_verify=form.Sign_in(driver, browser);
+                //if (regn_verify == true)
+                //{
+                //    Console.WriteLine("User Registered,Test case Passed");
+                //}
+                //else
+                //{
+                //    Console.WriteLine("User not Registered,Test case Failed");
+                //}
                 Order o=new Order();
-                o.Choose(driver, browser, form);
+               // o.Choose(driver, browser, form);
+                o.Order_TShirt(driver,browser,form);
             }
             catch (System.Net.WebException ex)
             {

@@ -9,8 +9,8 @@ namespace Testing2
 {
     internal interface User_Interface
     {   
-       void SignUp_Form(IWebDriver driver,Browser b);
-       void Sign_in(IWebDriver driver,Browser b);
+       bool User_Registration(IWebDriver driver,Browser b);
+       bool Sign_in(IWebDriver driver,Browser b);
        void Sign_Out(IWebDriver driver,Browser b); 
     }
     internal interface User_Order
