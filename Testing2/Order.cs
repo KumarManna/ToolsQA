@@ -96,6 +96,7 @@ namespace Testing2
         {
             By image = By.XPath("//*[@class='product-image-container']");
             b.Mouse_Hover(driver, driver.FindElement(image));
+            Thread.Sleep(100);
             By more = By.XPath("//div[@class='right-block']//child::a[2]");
             b.Mouse_Action(driver, driver.FindElement(more));
             Thread.Sleep(1000);
@@ -124,22 +125,27 @@ namespace Testing2
                             break;
                      }
                 }
-                //Console.WriteLine(t1 + i.ToString() + "]");
-                foreach(KeyValuePair<string,string> dic in d)
-                {
-                    Console.WriteLine(dic.Key, dic.Value);
-                }
-                
+                //Console.WriteLine(t1 + i.ToString() + "]"); 
+            }
+            foreach (KeyValuePair<string, string> dic in d)
+            {
+                Console.WriteLine(dic.Key, dic.Value);
             }
             string item_name = driver.FindElement(By.XPath("//*[@itemprop='name']")).Text;
             By s1 = By.XPath("//*[@id='search_query_top']");
             f.Form_Fill(driver, s1, b, item_name);
+            Thread.Sleep(100);
             By search = By.XPath("//*[@id='search_query_top']//following-sibling::button");
             f.Form_Fill(driver, search, b);
             Thread.Sleep(1000);
             b.scroll();
             b.scroll();
 
+           
+            b.Mouse_Hover(driver, driver.FindElement(image));
+            Thread.Sleep(100);
+            b.Mouse_Action(driver, driver.FindElement(more));
+            Thread.Sleep(1000);
             IDictionary<string, string> d1 = new Dictionary<string, string>();
             for (int i = 1; i <= 3; i++)
             {
@@ -168,8 +174,33 @@ namespace Testing2
             {
                 Console.WriteLine(dic.Key, dic.Value);
             }
-            Console.WriteLine(d1.Equals(d));
-            Thread.Sleep(2000);
+           
+           
+            bool equal = false;
+            if (d.Count == d1.Count) // Require equal count.
+            {
+                equal = true;
+                foreach (var pair in d)
+                {
+                    string value;
+                    if (d1.TryGetValue(pair.Key, out value))
+                    {
+                        // Require value be equal.
+                        if (value != pair.Value)
+                        {
+                            equal = false;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        // Require key be present.
+                        equal = false;
+                        break;
+                    }
+                }
+            }
+            Console.WriteLine(equal);
         }
         public void Payment(IWebDriver driver, Browser b)
         {
