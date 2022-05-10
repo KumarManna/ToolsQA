@@ -52,8 +52,9 @@ namespace Testing2
                 //    Console.WriteLine("User not Registered,Test case Failed");
                 //}
                 Order o=new Order();
-               // o.Choose(driver, browser, form);
-                o.Order_TShirt(driver,browser,form);
+                // o.Choose(driver, browser, form);
+                //  o.Order_TShirt(driver,browser,form);
+                o.Second_Order(driver,browser,form);
             }
             catch (System.Net.WebException ex)
             {

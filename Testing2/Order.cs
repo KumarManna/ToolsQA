@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using SeleniumExtras.WaitHelpers;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace Testing2
 {
@@ -202,6 +203,91 @@ namespace Testing2
             }
             Console.WriteLine(equal);
         }
+
+        public void Second_Order(IWebDriver driver, Browser b, Form f)
+        {
+            //div[@id='block_top_menu']/ul/li[1]//child::li[1]//child::li[1]
+            By t1 = By.XPath("//div[@id='block_top_menu']/ul/li[1]");
+            b.Mouse_Hover(driver,driver.FindElement(t1));
+            By t2 = By.XPath("//div[@id='block_top_menu']/ul/li[1]//child::li[1]//child::li[1]/a");
+            b.Mouse_Hover(driver, driver.FindElement(t2));
+            f.Form_Fill(driver, t2, b);
+            By image = By.XPath("//*[@class='product-image-container']");
+            b.Mouse_Hover(driver, driver.FindElement(image));
+            Thread.Sleep(100);
+            By more = By.XPath("//div[@class='right-block']//child::a[2]");
+            b.Cursor_Move(driver, driver.FindElement(more));
+            b.Mouse_Action(driver, driver.FindElement(more));
+            Thread.Sleep(100);
+            By inc = By.XPath("//*[@id='quantity_wanted_p']//child::a[2]");
+            f.Form_Fill(driver, inc, b);
+            By size_c = By.XPath("//*[@id='attributes']//child::*[@id='uniform-group_1']");
+            f.Form_Fill(driver, size_c, b);
+            Thread.Sleep(1000);
+            string o = "//*[@id='attributes']//child::*[@id='uniform-group_1']//child::*[@id='group_1']/option[@value='";
+            By size_option = By.XPath("//*[@id='attributes']//child::*[@id='uniform-group_1']//child::*[@id='group_1']/option");
+            
+            IReadOnlyCollection<IWebElement> list = driver.FindElements(size_option);
+            Console.WriteLine(list.Count);
+            string t,v;
+            foreach (IWebElement element in list)
+            {
+                t = element.Text;
+                v = element.GetAttribute("value");
+                if ("L" == t)
+                {
+                    element.Click();
+                    break;
+                }
+                Console.WriteLine(o + v.ToString() + "']");
+
+
+            }
+            Thread.Sleep(100);
+            b.scroll();
+            By or = By.XPath("//*[@id='color_to_pick_list']/li[2]/a");
+            f.Form_Fill(driver, or, b);
+            Thread.Sleep(100);
+            b.scroll();
+            By sub = By.XPath("//*[@id='add_to_cart']//child::button");
+            f.Form_Fill(driver, sub, b);
+            Thread.Sleep(100);
+            By check_out_btn1 = By.XPath("//*[@class='button-container']//child::a");
+            f.Form_Fill(driver, check_out_btn1, b);
+            Thread.Sleep(100);
+            b.scroll();
+            By check_out_btn2 = By.XPath("//*[@class='cart_navigation clearfix']/a");
+            f.Form_Fill(driver, check_out_btn2, b);
+            Thread.Sleep(100);
+            f.Sign_in(driver,b);
+            Thread.Sleep(100);
+            By check_out_btn3 = By.XPath("//*[@class='cart_navigation clearfix']//child::button");
+            f.Form_Fill(driver, check_out_btn3, b);
+            Thread.Sleep(100);
+            b.scroll();
+            b.scroll();
+            // By check_box = By.XPath("//*[@id='uniform-cgv']//child::input[@id='cgv']");
+            By check_box = By.Id("cgv");
+            b.Mouse_Hover(driver, driver.FindElement(check_box));
+            b.Mouse_Action(driver, driver.FindElement(check_box));
+            //f.Form_Fill(driver, check_box, b);
+            Thread.Sleep(100);
+            //*[@class='cart_navigation clearfix']//child::button
+            f.Form_Fill(driver, check_out_btn3, b);
+            Thread.Sleep(100);
+            b.scroll();
+            By pay_bank_wire = By.XPath("//*[@id='HOOK_PAYMENT']//child::p/a");
+            f.Form_Fill(driver, pay_bank_wire, b);
+           
+            b.scroll();
+            Thread.Sleep(100);
+            f.Form_Fill(driver, check_out_btn3, b);
+            b.scroll();
+            Thread.Sleep(5000);
+        }
+
+
+
         public void Payment(IWebDriver driver, Browser b)
         {
             Form f=new Form();
