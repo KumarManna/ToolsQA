@@ -396,7 +396,7 @@ namespace Testing2
             {
                 Console.WriteLine("Test case 3 not passed");
             }
-            Thread.Sleep(1000000);
+            Thread.Sleep(5000);
             
 
 
