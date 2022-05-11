@@ -375,11 +375,13 @@ namespace Testing2
             Console.WriteLine(price1);
             By inc = By.XPath("//*[@class='cart_quantity_button clearfix']/a[2]");
             f.Form_Fill(driver,inc,b);
+            Thread.Sleep(2000);
             b.scroll();
             b.scroll();
             //string price2 = driver.FindElement(By.XPath("//*[@id='cart_summary']//child::td[6]/span")).Text;
             //Console.WriteLine(price2);
-            string tp = driver.FindElement(By.XPath("//*[@id='total_price']")).Text;
+            string tp = driver.FindElement(By.XPath("//*[@id='total_price_container']/span")).Text;
+          //  Thread.Sleep(1000);
             Console.WriteLine(tp);
             //price2.Remove(0);
             //float p2 = float.Parse(price2.Remove(0).ToString());
