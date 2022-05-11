@@ -54,7 +54,9 @@ namespace Testing2
                 Order o=new Order();
                 // o.Choose(driver, browser, form);
                 //  o.Order_TShirt(driver,browser,form);
-                o.Second_Order(driver,browser,form);
+                // o.Second_Order(driver,browser,form);
+                // o.Add_To_WishList(driver, browser, form);
+                o.Shopping_Cart_Summary_Page(driver, browser, form);
             }
             catch (System.Net.WebException ex)
             {
